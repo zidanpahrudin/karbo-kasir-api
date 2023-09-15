@@ -26,11 +26,13 @@ module.exports = {
                     data: []
                 });
             }
-
             // client
-            const client = await MstClient.findById(user.client_id)
+            const client = await MstClient.findById(user.client_id);
             const response_user = {};
-            response_user.username = user.user_name;
+            response_user._id = user._id,
+            response_user.client_id = user.client_id,
+            response_user.user_name = user.user_name,
+            response_user.user_level = user.user_level,
             response_user.client_name = client.client_name;
             response_user.token = user.generateJWT();
 
