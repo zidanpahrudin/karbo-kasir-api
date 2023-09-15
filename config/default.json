@@ -1,0 +1,6 @@
+{
+    "timeZone": "Asia/Jakarta",
+    "database_user": "mongodb://127.0.0.1:27017/db_kasir_user",
+    "UTC": 7,
+    "JWT_SECRET": "secretKeyKasir"
+}
