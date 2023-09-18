@@ -5,12 +5,10 @@ const router = require("express").Router();
 const auth = require("../../middleware/auth");
 
 // controller
-const {
-    fetch,
-    create,
-    update,
-    remove
-} = require("../../controllers/stall.controller");
+const stallController = require("../../controllers/stall.controller");
+const userController = require("../../controllers/user.controller");
+const clientController = require("../../controllers/client.controller");
+
 
 
 /**
@@ -21,7 +19,7 @@ const {
  * @access private
  */
 
-router.get('/fetch/stall', auth, fetch);
+router.get('/fetch/stall', auth, stallController.fetch);
 
 /**
  * api admin mendapatkan cabang by id.
@@ -31,7 +29,7 @@ router.get('/fetch/stall', auth, fetch);
  * @access private
  */
 
-router.get('/fetch/stall/:stall_id', auth, fetch);
+router.get('/fetch/stall/:stall_id', auth, stallController.fetch);
 
 
 /**
@@ -42,7 +40,7 @@ router.get('/fetch/stall/:stall_id', auth, fetch);
  * @access private
  */
 
-router.post('/create/stall', auth, create);
+router.post('/create/stall', auth, stallController.create);
 
 /**
  * api admin mengupdate cabang.
@@ -52,7 +50,7 @@ router.post('/create/stall', auth, create);
  * @access private
  */
 
-router.put('/update/stall/:stall_id', auth, update);
+router.put('/update/stall/:stall_id', auth, stallController.update);
 
 /**
  * api admin delete cabang.
@@ -62,7 +60,7 @@ router.put('/update/stall/:stall_id', auth, update);
  * @access private
  */
 
-router.put('/delete/stall/:stall_id', auth, remove);
+router.put('/delete/stall/:stall_id', auth, stallController.remove);
 
 /**
  * api admin register user.
@@ -71,7 +69,26 @@ router.put('/delete/stall/:stall_id', auth, remove);
  * @method  - POST
  * @access private
  */
-router.post("/create/user");
+router.post("/create/user", auth, userController.create);
+
+
+/**
+ * api admin mendapatkan list client.
+ *
+ * @route   - admin/fetch/clients
+ * @method  - GET
+ * @access private
+ */
+router.get("/fetch/clients", auth, clientController.fetch);
+
+/**
+ * api admin mendapatkan client by id.
+ *
+ * @route   - admin/fetch/clients/:client_id
+ * @method  - GET
+ * @access private
+ */
+router.get("/fetch/client/:client_id", auth, clientController.fetch);
 
 
 module.exports = router;

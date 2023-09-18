@@ -9,14 +9,12 @@ momentTimezone.tz("Asia/Jakarta");
 module.exports = {
     approval: async (req, res) => {
         try {
-            const type = req.query.type;
             const client_id = req.query.client_id;
             const {
                 start_date,
                 end_date,
                 remarks 
             } = req.body;
-            if(type === "approve_client") {
                 const contract_obj = {};
                 const utc = new Date();
                 let day = momentTimezone(utc.setHours(parseFloat(utc.getHours()) + parseFloat(config.get("UTC"))));
@@ -59,7 +57,7 @@ module.exports = {
                     message: "client berhasil di approve",
                     data: []
                 })
-            };
+            
 
         } catch (err) {
             res.json({

@@ -1,11 +1,13 @@
 module.exports = {
     clientObject: {
         type: 'object',
-
         properties: {
             client_name: { type: 'string', minLength: 3, maxLength: 50 },
             address: { type: 'string', minLength: 3, maxLength: 50 },
-            phone: { type: 'string', minLength: 8, maxLength: 15 },
+            phone: { 
+                type: 'string',
+                pattern: "^(\\+62|62|0)8[1-9][0-9]{6,9}$"
+            },
             business_type: { type: 'string' },
             account_type: { type: 'string' }
         },

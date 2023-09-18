@@ -17,6 +17,7 @@ const MstClientSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
+        unique: true,
         required: true
     },
     business_type: {

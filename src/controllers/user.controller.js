@@ -1,6 +1,8 @@
 const MstUser = require("../models/mst_user");
 const MstClient = require("../models/mst_client");
 const UserMenu = require("../models/user_menu");
+const UserStall = require("../models/user_stall");
+
 
 module.exports = {
     login: async (req, res) => {
@@ -51,8 +53,6 @@ module.exports = {
             })
         }
     },
-
-    
     create: async (req, res) => {
         try {
             const {
@@ -87,12 +87,20 @@ module.exports = {
             const user_stall = [];
             if (stall_ids.length > 0) {
                 for (const stall_id of stall_ids) {
-                    user_menu.push({
+                    user_stall.push({
                         user_id: user_id,
-                        menu_id: menu_id
+                        menu_id: stall_id
                     });
                 }
             }
+
+            await UserStall.insertMany(user_stall);
+
+            return res.json({
+                status: "success",
+                message: "berhasil mendaftarkan user",
+                data: []
+            })
 
 
         }
