@@ -13,7 +13,7 @@ module.exports = {
         
         return  res.json({
             status: "success",
-            message: "cabang di temukan",
+            message: "menu di temukan",
             data: menu
         })
     },
@@ -70,7 +70,7 @@ module.exports = {
         })
     },
     remove: async (req, res) => {
-        const client_id = req.user.client_id;
+            const client_id = req.user.client_id;
             const menu_id = req.params.menu_id;
             const client = await MstClient.findOne({_id: client_id, active: 1});
             if(!client) {
